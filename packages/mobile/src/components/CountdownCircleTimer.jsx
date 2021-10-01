@@ -1,15 +1,28 @@
 import React from 'react'
-import { View, Animated } from 'react-native'
+import { View, Animated ,Dimensions} from 'react-native'
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg'
 import {
   DefsLinearGradient,
   countdownCircleTimerProps,
-  countdownCircleTimerDefaultProps,
 } from '@countdown-circle-timer/shared'
-import { TimeWrapper } from '.'
+import { TimeWrapper } from './TimeWrapper'
 import { useCountdown } from '../hooks'
 
 const AnimatedPath = Animated.createAnimatedComponent(Path)
+
+const windowWidth= Dimensions.get('window').width;
+
+const countdownCircleTimerDefaultProps = {
+  size: windowWidth*0.666666,
+  strokeWidth: windowWidth*0.0453333,
+  trailColor: 'black',
+  isPlaying: false,
+  strokeLinecap: 'round',
+  isLinearGradient: false,
+  ariaLabel: 'Countdown timer',
+  children: null,
+  rotation: 'clockwise',
+}
 
 const CountdownCircleTimer = (props) => {
   const {
