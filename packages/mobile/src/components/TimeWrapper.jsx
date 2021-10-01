@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Text, Animated, StyleSheet } from 'react-native'
-import {
-  countdownCircleTimerProps,
-  timeStyle,
-} from '@countdown-circle-timer/shared'
+import { Text, Animated, StyleSheet, View, Pressable } from 'react-native'
+import { countdownCircleTimerProps } from '@countdown-circle-timer/shared'
+
+const timeStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  width: '100%',
+  height: '100%',
+}
 
 const styles = StyleSheet.create({
   time: timeStyle,
