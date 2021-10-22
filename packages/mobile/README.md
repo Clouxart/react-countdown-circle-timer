@@ -34,10 +34,10 @@ Check the [Expo Snack](https://snack.expo.io/@dimitrov/countdown-circle-timer?pl
 ## Basic usage
 
 ```jsx
-import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
+import { CircleTimer } from 'react-native-countdown-circle-timer'
 
 const UrgeWithPleasureComponent = () => (
-  <CountdownCircleTimer
+  <CircleTimer
     isPlaying
     duration={10}
     colors={[
@@ -51,7 +51,7 @@ const UrgeWithPleasureComponent = () => (
         {remainingTime}
       </Animated.Text>
     )}
-  </CountdownCircleTimer>
+  </CircleTimer>
 )
 ```
 

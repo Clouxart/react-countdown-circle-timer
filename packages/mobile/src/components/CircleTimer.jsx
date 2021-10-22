@@ -10,12 +10,13 @@ import { useCountdown } from '../hooks'
 
 const AnimatedPath = Animated.createAnimatedComponent(Path)
 
-const windowWidth= Dimensions.get('window').width;
+const windowHeight= Dimensions.get('window').height;
 
 const countdownCircleTimerDefaultProps = {
-  size: windowWidth*0.666666,
-  strokeWidth: windowWidth*0.0453333,
-  trailColor: 'black',
+  size:windowHeight*0.3078817,
+  strokeWidth: windowHeight*0.0209359,
+  trailColor: '#FB8A04',
+  trailStrokeWidth:windowHeight*0.0199359,
   isPlaying: false,
   strokeLinecap: 'round',
   isLinearGradient: false,
@@ -24,7 +25,7 @@ const countdownCircleTimerDefaultProps = {
   rotation: 'clockwise',
 }
 
-const CountdownCircleTimer = (props) => {
+const CircleTimer = (props) => {
   const {
     size,
     strokeWidth,
@@ -116,8 +117,8 @@ const CountdownCircleTimer = (props) => {
   )
 }
 
-CountdownCircleTimer.propTypes = countdownCircleTimerProps
-CountdownCircleTimer.defaultProps = countdownCircleTimerDefaultProps
-CountdownCircleTimer.displayName = 'CountdownCircleTimer'
+CircleTimer.propTypes = countdownCircleTimerProps
+CircleTimer.defaultProps = countdownCircleTimerDefaultProps
+CircleTimer.displayName = 'CircleTimer'
 
-export { CountdownCircleTimer }
+export { CircleTimer }

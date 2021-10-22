@@ -1,10 +1,14 @@
 {
-  "name": "countdown-circle-timer-monorepo",
-  "private": true,
+  "name": "@clouxart/react-circle-timer",
+  "version": "0.0.1",
+  "private": false,
   "description": "Lightweight React/React Native countdown timer component with color and progress animation based on SVG",
   "workspaces": [
     "packages/*"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
@@ -13,10 +17,10 @@
     "dev:push": "lerna run dev:push",
     "lint": "eslint --ext js,jsx ."
   },
-  "homepage": "https://github.com/vydimitrov/react-countdown-circle-timer#readme",
+  "homepage": "https://github.com/Clouxart/react-countdown-circle-timer#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vydimitrov/react-countdown-circle-timer.git"
+    "url": "git+https://github.com/Clouxart/react-countdown-circle-timer.git"
   },
   "keywords": [
     "react",
@@ -27,7 +31,7 @@
     "clock",
     "SVG"
   ],
-  "author": "Vasil Dimitrov",
+  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.15.0",
@@ -58,5 +62,8 @@
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --fix"
+  },
+  "dependencies": {
+    "semver": "^7.3.5"
   }
 }

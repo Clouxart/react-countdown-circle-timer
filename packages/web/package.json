@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vydimitrov/react-countdown-circle-timer.git"
+    "url": "git+https://github.com/Clouxart/react-countdown-circle-timer.git"
   },
   "keywords": [
     "react",
@@ -22,12 +22,12 @@
     "clock",
     "SVG"
   ],
-  "author": "Vasil Dimitrov",
+  "author": "Berkay",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vydimitrov/react-countdown-circle-timer/issues"
+    "url": "https://github.com/Clouxart/react-countdown-circle-timerissues"
   },
-  "homepage": "https://github.com/vydimitrov/react-countdown-circle-timer/tree/master/packages/web#readme",
+  "homepage": "https://github.com/Clouxart/react-countdown-circle-timer/tree/master/packages/web#readme",
   "peerDependencies": {
     "prop-types": ">=15.7.0",
     "react": ">=16.8.0",

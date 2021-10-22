@@ -38,7 +38,7 @@ const TimeWrapper = (props) => {
     const animatedListenerId = animatedElapsedTime.addListener(({ value }) => {
       const elapsedTime = value / 1000
       setTimeProps({
-        remainingTime: Math.ceil(duration - elapsedTime),
+        remainingTime: Math.ceil(elapsedTime),
         elapsedTime,
         animatedColor,
       })

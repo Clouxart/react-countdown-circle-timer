@@ -3,7 +3,10 @@ export const getStartAt = (initialRemainingTime, duration) => {
     return 0
   }
 
-  return typeof initialRemainingTime === 'number'
-    ? duration - initialRemainingTime
-    : 0
+  if(typeof initialRemainingTime === 'number'){
+    console.log("inital remaing time: ",initialRemainingTime);
+    return duration - initialRemainingTime
+  }else{
+    return 0
+  }
 }
