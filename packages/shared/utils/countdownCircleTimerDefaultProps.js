@@ -1,5 +1,5 @@
 export const countdownCircleTimerDefaultProps = {
-  size: 250,
+  size: 300,
   strokeWidth: 17,
   trailColor: '#d9d9d9',
   isPlaying: false,

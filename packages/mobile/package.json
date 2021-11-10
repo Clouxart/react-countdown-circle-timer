@@ -1,6 +1,6 @@
 {
-  "name": "berkay",
-  "version": "2.5.6",
+  "name": "@clouxart/react-native-countdown-circle-timer",
+  "version": "2.5.7",
   "description": "Lightweight React Native countdown timer component with color and progress animation based on SVG",
   "main": "./lib/index.js",
   "publishConfig": {
@@ -50,5 +50,5 @@
     "lib",
     "types"
   ],
-  "types": "types/CircleTimer.d.ts"
+  "types": "types/CountdownCircleTimer.d.ts"
 }

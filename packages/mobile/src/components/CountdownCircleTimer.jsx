@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Animated ,Dimensions} from 'react-native'
-import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg'
+import Svg, { Path, Defs, LinearGradient, Stop, Circle } from 'react-native-svg'
 import {
   DefsLinearGradient,
   countdownCircleTimerProps,
@@ -13,9 +13,9 @@ const AnimatedPath = Animated.createAnimatedComponent(Path)
 const windowHeight= Dimensions.get('window').height;
 
 const countdownCircleTimerDefaultProps = {
-  size:windowHeight*0.3078817,
+  size:windowHeight*0.3694581,
   strokeWidth: windowHeight*0.0209359,
-  trailColor: '#FB8A04',
+  trailColor: 'black',
   trailStrokeWidth:windowHeight*0.0199359,
   isPlaying: false,
   strokeLinecap: 'round',
@@ -25,7 +25,7 @@ const countdownCircleTimerDefaultProps = {
   rotation: 'clockwise',
 }
 
-const CircleTimer = (props) => {
+const CountdownCircleTimer = (props) => {
   const {
     size,
     strokeWidth,
@@ -92,15 +92,23 @@ const CircleTimer = (props) => {
           d={path}
         />
         {isProgressPathVisible && (
+          <>
+          <Path
+      fill="none"
+      stroke="black"
+      d={path}
+      strokeWidth="20"
+      strokeDasharray="3 8"
+    />
           <AnimatedPath
-            fill="none"
-            stroke={isLinearGradient ? `url(#${gradientId})` : animatedStroke}
-            d={path}
-            strokeLinecap={strokeLinecap}
-            strokeWidth={strokeWidth}
-            strokeDasharray={pathLength}
-            strokeDashoffset={strokeDashoffset}
+             fill="none"
+             stroke="white"
+             d={path}
+             strokeWidth="22"
+             strokeDasharray={pathLength}
+             strokeDashoffset={strokeDashoffset}
           />
+          </>
         )}
       </Svg>
       {(children !== null || typeof renderAriaTime === 'function') && (
@@ -117,8 +125,8 @@ const CircleTimer = (props) => {
   )
 }
 
-CircleTimer.propTypes = countdownCircleTimerProps
-CircleTimer.defaultProps = countdownCircleTimerDefaultProps
-CircleTimer.displayName = 'CircleTimer'
+CountdownCircleTimer.propTypes = countdownCircleTimerProps
+CountdownCircleTimer.defaultProps = countdownCircleTimerDefaultProps
+CountdownCircleTimer.displayName = 'CountdownCircleTimer'
 
-export { CircleTimer }
+export { CountdownCircleTimer }

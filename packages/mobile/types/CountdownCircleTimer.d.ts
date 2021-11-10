@@ -55,5 +55,5 @@ export interface CountdownCircleTimerProps {
   renderAriaTime?: (props: TimeProps) => string
 }
 
-declare const CircleTimer: React.FunctionComponent<CountdownCircleTimerProps>
-export { CircleTimer }
+declare const CountdownCircleTimer: React.FunctionComponent<CountdownCircleTimerProps>
+export { CountdownCircleTimer }

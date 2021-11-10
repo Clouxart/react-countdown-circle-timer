@@ -1,1 +1,1 @@
-export { CircleTimer } from './components'
+export { CountdownCircleTimer } from './components'

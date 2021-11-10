@@ -90,10 +90,11 @@ export const useCountdown = ({
 
           if (typeof onComplete === 'function') {
             totalElapsedTime.current -= durationMilliseconds / 1000
-
             const [shouldRepeat = false, delay = 0] =
-              onComplete(totalElapsedTime.current) || []
+            onComplete(totalElapsedTime.current) || []
 
+
+            
             if (shouldRepeat && isMountedRef.current) {
               repeatTimeoutRef.current = setTimeout(() => {
                 // reset animation and start over

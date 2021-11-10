@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 import renderer from 'react-test-renderer'
 import { render, waitFor } from '@testing-library/react-native'
 
-import { CircleTimer } from '../src'
+import { CountdownCircleTimer } from '../src'
 
 Math.random = () => 0.124578
 
@@ -18,7 +18,7 @@ const fixture = {
 
 describe('snapshot tests', () => {
   it('renders', () => {
-    const tree = renderer.create(<CircleTimer {...fixture} />).toJSON()
+    const tree = renderer.create(<CountdownCircleTimer {...fixture} />).toJSON()
 
     expect(tree).toMatchSnapshot()
   })
@@ -26,12 +26,12 @@ describe('snapshot tests', () => {
   it('renders with time', () => {
     const tree = renderer
       .create(
-        <CircleTimer
+        <CountdownCircleTimer
           {...fixture}
           renderAriaTime={({ remainingTime }) => remainingTime}
         >
           {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CircleTimer>
+        </CountdownCircleTimer>
       )
       .toJSON()
 
@@ -41,9 +41,9 @@ describe('snapshot tests', () => {
   it('renders with single color', () => {
     const tree = renderer
       .create(
-        <CircleTimer duration={5} colors={[['#004777', 1]]}>
+        <CountdownCircleTimer duration={5} colors={[['#004777', 1]]}>
           {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CircleTimer>
+        </CountdownCircleTimer>
       )
       .toJSON()
 
@@ -53,9 +53,9 @@ describe('snapshot tests', () => {
   it('renders with single color provided as a string', () => {
     const tree = renderer
       .create(
-        <CircleTimer duration={5} colors="#004777">
+        <CountdownCircleTimer duration={5} colors="#004777">
           {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CircleTimer>
+        </CountdownCircleTimer>
       )
       .toJSON()
 
@@ -65,7 +65,7 @@ describe('snapshot tests', () => {
   it('renders with gradient', () => {
     const tree = renderer
       .create(
-        <CircleTimer
+        <CountdownCircleTimer
           duration={5}
           colors={[
             ['#004777', 0.4],
@@ -74,7 +74,7 @@ describe('snapshot tests', () => {
           isLinearGradient
         >
           {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CircleTimer>
+        </CountdownCircleTimer>
       )
       .toJSON()
 
@@ -84,13 +84,13 @@ describe('snapshot tests', () => {
   it('renders with different trail stroke width', () => {
     const tree = renderer
       .create(
-        <CircleTimer
+        <CountdownCircleTimer
           {...fixture}
           trailStrokeWidth={16}
           strokeWidth={14}
         >
           {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CircleTimer>
+        </CountdownCircleTimer>
       )
       .toJSON()
 
@@ -100,12 +100,12 @@ describe('snapshot tests', () => {
   it('renders correctly when color duration is not provided', () => {
     const tree = renderer
       .create(
-        <CircleTimer
+        <CountdownCircleTimer
           {...fixture}
           colors={[['#047'], ['#aaa'], ['#bbb']]}
         >
           {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CircleTimer>
+        </CountdownCircleTimer>
       )
       .toJSON()
 
@@ -116,9 +116,9 @@ describe('snapshot tests', () => {
 describe('functional tests', () => {
   it('should start the timer from value provided in initialRemainingTime', () => {
     const { getByText } = render(
-      <CircleTimer {...fixture} initialRemainingTime={3.7}>
+      <CountdownCircleTimer {...fixture} initialRemainingTime={3.7}>
         {({ remainingTime }) => <Text>{remainingTime}</Text>}
-      </CircleTimer>
+      </CountdownCircleTimer>
     )
 
     expect(getByText('4')).toBeTruthy()
@@ -129,14 +129,14 @@ describe('behaviour tests', () => {
   it('should call onComplete at the end of the countdown', async () => {
     const onComplete = jest.fn()
     const { findByText } = render(
-      <CircleTimer
+      <CountdownCircleTimer
         {...fixture}
         duration={1}
         isPlaying
         onComplete={onComplete}
       >
         {({ remainingTime }) => <Text>{remainingTime}</Text>}
-      </CircleTimer>
+      </CountdownCircleTimer>
     )
 
     expect(await findByText('0')).toBeTruthy()
@@ -148,7 +148,7 @@ describe('behaviour tests', () => {
 
     global.clearTimeout = clearTimeoutMock
 
-    const { unmount } = render(<CircleTimer {...fixture} />)
+    const { unmount } = render(<CountdownCircleTimer {...fixture} />)
 
     unmount()
 
