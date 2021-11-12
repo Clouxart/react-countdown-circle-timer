@@ -31,10 +31,10 @@ Check the demo on CodeSandbox to get started
 ## Basic usage
 
 ```jsx
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { CircleTimer } from 'react-countdown-circle-timer'
 
 const UrgeWithPleasureComponent = () => (
-  <CountdownCircleTimer
+  <CircleTimer
     isPlaying
     duration={10}
     colors={[
@@ -44,7 +44,7 @@ const UrgeWithPleasureComponent = () => (
     ]}
   >
     {({ remainingTime }) => remainingTime}
-  </CountdownCircleTimer>
+  </CircleTimer>
 )
 ```
 

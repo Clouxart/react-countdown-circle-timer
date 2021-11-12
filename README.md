@@ -61,11 +61,11 @@ This component has a peer dependency on `react-native-svg`. Read the [full docum
 
 ### Change `duration` and/or `initialRemainingTime` once component is mounted
 
-Once the component is mounted `duration` and `initialRemainingTime` can not be changed to avoid any issues computing colors and progress. To set new values for any of the two props just pass a new `key` prop to `CountdownCircleTimer` component and the timer will start over with the new values provided.
+Once the component is mounted `duration` and `initialRemainingTime` can not be changed to avoid any issues computing colors and progress. To set new values for any of the two props just pass a new `key` prop to `CircleTimer` component and the timer will start over with the new values provided.
 
 ### Restart/Reset timer at any given time
 
-Pass a `key` prop to `CountdownCircleTimer` and change the `key` when the timer should be restarted. Check [this demo](https://codesandbox.io/s/tender-bogdan-qd35m) to find out one possible implementation.
+Pass a `key` prop to `CircleTimer` and change the `key` when the timer should be restarted. Check [this demo](https://codesandbox.io/s/tender-bogdan-qd35m) to find out one possible implementation.
 
 ### Repeat timer when countdown is completed
 
@@ -73,7 +73,7 @@ Return an array from `onComplete` handler, which indicates if the animation shou
 
 ```jsx
 const UrgeWithPleasureComponent = () => (
-  <CountdownCircleTimer
+  <CircleTimer
     onComplete={() => {
       // do your stuff here
       return [true, 1500] // repeat animation in 1.5 seconds
@@ -91,7 +91,7 @@ Pass the remaining time to `initialRemainingTime` prop. Example:
 
 ```jsx
 const UrgeWithPleasureComponent = () => (
-  <CountdownCircleTimer
+  <CircleTimer
     isPlaying
     duration={60}
     initialRemainingTime={15}
@@ -104,7 +104,7 @@ In the example above, the countdown will start at 15 seconds (one quarter before
 
 ### Time formatting functions
 
-`children` prop of `CountdownCircleTimer` component will receive as a prop `remainingTime` in seconds. Below are few function that can be used to get different time formatting:
+`children` prop of `CircleTimer` component will receive as a prop `remainingTime` in seconds. Below are few function that can be used to get different time formatting:
 
 - Format `mm:ss` (minutes and seconds)
 

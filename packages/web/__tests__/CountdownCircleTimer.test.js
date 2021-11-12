@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import { CountdownCircleTimer } from '../src'
+import { CircleTimer } from '../src'
 
 Math.random = () => 0.124578
 
@@ -20,7 +20,7 @@ const fixture = {
 
 describe('snapshot tests', () => {
   it('renders', () => {
-    const tree = renderer.create(<CountdownCircleTimer {...fixture} />).toJSON()
+    const tree = renderer.create(<CircleTimer {...fixture} />).toJSON()
 
     expect(tree).toMatchSnapshot()
   })
@@ -29,9 +29,9 @@ describe('snapshot tests', () => {
     const renderTime = ({ remainingTime }) => remainingTime
     const tree = renderer
       .create(
-        <CountdownCircleTimer {...fixture} renderAriaTime={renderTime}>
+        <CircleTimer {...fixture} renderAriaTime={renderTime}>
           {renderTime}
-        </CountdownCircleTimer>
+        </CircleTimer>
       )
       .toJSON()
 
@@ -42,9 +42,9 @@ describe('snapshot tests', () => {
     const renderTime = ({ remainingTime }) => remainingTime
     const tree = renderer
       .create(
-        <CountdownCircleTimer {...fixture} trailStrokeWidth={16}>
+        <CircleTimer {...fixture} trailStrokeWidth={16}>
           {renderTime}
-        </CountdownCircleTimer>
+        </CircleTimer>
       )
       .toJSON()
 
@@ -58,7 +58,7 @@ describe('functional tests', () => {
   })
 
   it('should set styles correctly on the root', () => {
-    render(<CountdownCircleTimer {...fixture} size={240} />)
+    render(<CircleTimer {...fixture} size={240} />)
 
     expect(screen.getByLabelText('Countdown timer')).toHaveStyle(`
             position: relative;
@@ -68,14 +68,14 @@ describe('functional tests', () => {
   })
 
   it('should set aria-label attribute', () => {
-    render(<CountdownCircleTimer {...fixture} ariaLabel="Nedtællingsur" />)
+    render(<CircleTimer {...fixture} ariaLabel="Nedtællingsur" />)
 
     expect(screen.getByLabelText('Nedtællingsur')).toBeInTheDocument()
   })
 
   it('should set width and height attributes on the svg element', () => {
     const { container } = render(
-      <CountdownCircleTimer {...fixture} size={360} />
+      <CircleTimer {...fixture} size={360} />
     )
 
     const svg = container.querySelector('svg')
@@ -85,7 +85,7 @@ describe('functional tests', () => {
 
   it('should add linearGradient tag with the ID provided when isLinearGradient is true', () => {
     const { container } = render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         isLinearGradient
         gradientUniqueKey="test"
@@ -102,7 +102,7 @@ describe('functional tests', () => {
 
   it('should add linearGradient tag with random ID when an ID is not provided and isLinearGradient is true', () => {
     const { container } = render(
-      <CountdownCircleTimer {...fixture} isLinearGradient />
+      <CircleTimer {...fixture} isLinearGradient />
     )
 
     const linearGradient = container.querySelector('linearGradient')
@@ -115,7 +115,7 @@ describe('functional tests', () => {
 
   it('should set stroke-width, stroke, and d attributes on the trail path', () => {
     const { container } = render(
-      <CountdownCircleTimer {...fixture} strokeWidth={13} trailColor="#CCC" />
+      <CircleTimer {...fixture} strokeWidth={13} trailColor="#CCC" />
     )
 
     const path = container.querySelector('path')
@@ -130,7 +130,7 @@ describe('functional tests', () => {
 
   it('should set stroke-width, stroke-linecap, stroke-dasharray, and d attributes on the path that animates', () => {
     const { container } = render(
-      <CountdownCircleTimer {...fixture} strokeWidth={13} />
+      <CircleTimer {...fixture} strokeWidth={13} />
     )
 
     const path = container.querySelectorAll('path')[1]
@@ -146,7 +146,7 @@ describe('functional tests', () => {
 
   it('should set the path that animates to "counterclockwise" rotation when rotation prop is "counterclockwise"', () => {
     const { container } = render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         strokeWidth={13}
         rotation="counterclockwise"
@@ -162,7 +162,7 @@ describe('functional tests', () => {
   })
 
   it('should set stroke and stroke-dashoffset on the path that animates at the beginning of the animation', () => {
-    const { container } = render(<CountdownCircleTimer {...fixture} />)
+    const { container } = render(<CircleTimer {...fixture} />)
 
     const path = container.querySelectorAll('path')[1]
     expect(path).toHaveAttribute('stroke-dashoffset', '0')
@@ -171,7 +171,7 @@ describe('functional tests', () => {
 
   it('should set stroke and stroke-dashoffset on the path that animates at the middle of the animation', () => {
     useElapsedTime.__setElapsedTime(5)
-    const { container } = render(<CountdownCircleTimer {...fixture} />)
+    const { container } = render(<CircleTimer {...fixture} />)
 
     const path = container.querySelectorAll('path')[1]
     expect(path).toHaveAttribute('stroke-dashoffset', '263.89378290154264')
@@ -180,7 +180,7 @@ describe('functional tests', () => {
 
   it('should set stroke and stroke-dashoffset on the path that animates at the end of the animation', () => {
     useElapsedTime.__setElapsedTime(10)
-    const { container } = render(<CountdownCircleTimer {...fixture} />)
+    const { container } = render(<CircleTimer {...fixture} />)
 
     const path = container.querySelectorAll('path')[1]
     expect(path).toHaveAttribute('stroke-dashoffset', '527.7875658030853')
@@ -192,7 +192,7 @@ describe('functional tests', () => {
 
     const expectedPathProps = ['stroke', 'rgba(0, 71, 119, 1)']
     const component = () => (
-      <CountdownCircleTimer {...fixture} colors={[['#004777']]} />
+      <CircleTimer {...fixture} colors={[['#004777']]} />
     )
     const { container, rerender } = render(component())
 
@@ -211,7 +211,7 @@ describe('functional tests', () => {
 
     const expectedPathProps = ['stroke', 'rgba(0, 71, 119, 1)']
     const component = () => (
-      <CountdownCircleTimer {...fixture} colors="#004777" />
+      <CircleTimer {...fixture} colors="#004777" />
     )
     const { container, rerender } = render(component())
 
@@ -229,7 +229,7 @@ describe('functional tests', () => {
     useElapsedTime.__setElapsedTime(0)
 
     const component = () => (
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         colors={[
           ['#fff', 0.6],
@@ -260,7 +260,7 @@ describe('functional tests', () => {
     useElapsedTime.__setElapsedTime(3)
 
     const component = () => (
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         colors={[['#fff', 0.3], ['#ccc'], ['#000']]} // color #ccc fills in duration and color #000 is shown at the end
       />
@@ -286,7 +286,7 @@ describe('functional tests', () => {
 
   it('should set stroke of the path that animates correctly when the colors are shorthanded', () => {
     const { container } = render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         colors={[['#abc', 0.45], ['#fa4', 0.45], ['#ccc']]}
       />
@@ -298,7 +298,7 @@ describe('functional tests', () => {
 
   it('should set stroke as the gradient Id on the path that animates if isLinearGradient is true', () => {
     const { container } = render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         isLinearGradient
         gradientUniqueKey="test"
@@ -316,9 +316,9 @@ describe('functional tests', () => {
     useElapsedTime.__setElapsedTime(8)
 
     render(
-      <CountdownCircleTimer {...fixture}>
+      <CircleTimer {...fixture}>
         {({ remainingTime }) => `${remainingTime} seconds remaining`}
-      </CountdownCircleTimer>
+      </CircleTimer>
     )
 
     const time = screen.getByText('2 seconds remaining')
@@ -339,9 +339,9 @@ describe('functional tests', () => {
     useElapsedTime.__setElapsedTime(8)
 
     render(
-      <CountdownCircleTimer {...fixture}>
+      <CircleTimer {...fixture}>
         {({ remainingTime }) => `${remainingTime} seconds remaining`}
-      </CountdownCircleTimer>
+      </CircleTimer>
     )
 
     const time = screen.getByText('2 seconds remaining')
@@ -358,9 +358,9 @@ describe('functional tests', () => {
     )
 
     render(
-      <CountdownCircleTimer {...fixture}>
+      <CircleTimer {...fixture}>
         <TimeComponent format="seconds" />
-      </CountdownCircleTimer>
+      </CircleTimer>
     )
 
     const time = screen.getByText('2 seconds remaining')
@@ -372,7 +372,7 @@ describe('functional tests', () => {
     const renderAriaTime = ({ remainingTime }) => `${remainingTime} seconds`
 
     render(
-      <CountdownCircleTimer {...fixture} renderAriaTime={renderAriaTime} />
+      <CircleTimer {...fixture} renderAriaTime={renderAriaTime} />
     )
 
     expect(screen.getByText('7 seconds')).toBeInTheDocument()
@@ -383,7 +383,7 @@ describe('functional tests', () => {
     const initialRemainingTime = 7
 
     render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         initialRemainingTime={initialRemainingTime}
         isPlaying={isPlaying}
@@ -404,7 +404,7 @@ describe('functional tests', () => {
   it('should not change the duration and startAt if new values for them are provided after the component is mounted', () => {
     const initialRemainingTime = 7
     const { rerender } = render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         initialRemainingTime={initialRemainingTime}
       />
@@ -419,7 +419,7 @@ describe('functional tests', () => {
     expect(useElapsedTime.__getConfig()).toEqual(expectedOptions)
 
     rerender(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         duration={4}
         initialRemainingTime={2}
@@ -434,7 +434,7 @@ describe('functional tests', () => {
 
   it('should set strokeDasharray to the total path length if the duration provided is 0', () => {
     const { container } = render(
-      <CountdownCircleTimer {...fixture} duration={0} />
+      <CircleTimer {...fixture} duration={0} />
     )
 
     const path = container.querySelectorAll('path')[1]
@@ -443,7 +443,7 @@ describe('functional tests', () => {
 
   it('should set statAt prop to 0 if the duration provided is 0', () => {
     render(
-      <CountdownCircleTimer
+      <CircleTimer
         {...fixture}
         duration={0}
         initialRemainingTime={4}
@@ -461,7 +461,7 @@ describe('behaviour tests', () => {
   it('should fire onComplete', () => {
     const onComplete = jest.fn()
 
-    render(<CountdownCircleTimer {...fixture} onComplete={onComplete} />)
+    render(<CircleTimer {...fixture} onComplete={onComplete} />)
 
     useElapsedTime.__fireOnComplete()
 
@@ -473,7 +473,7 @@ describe('behaviour tests', () => {
   it('should pass as an argument the total elapsed time in seconds to onComplete callback', () => {
     const onComplete = jest.fn()
 
-    render(<CountdownCircleTimer {...fixture} onComplete={onComplete} />)
+    render(<CircleTimer {...fixture} onComplete={onComplete} />)
 
     useElapsedTime.__fireOnComplete(3.612, 'second argument')
 
@@ -484,7 +484,7 @@ describe('behaviour tests', () => {
 
   it('should set trail stroke width', () => {
     const { container } = render(
-      <CountdownCircleTimer {...fixture} trailStrokeWidth={14} />
+      <CircleTimer {...fixture} trailStrokeWidth={14} />
     )
 
     const path = container.querySelector('path')

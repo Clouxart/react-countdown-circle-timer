@@ -6,7 +6,7 @@ import {
 } from '@countdown-circle-timer/shared'
 import { useCountdown } from '../hooks'
 
-const CountdownCircleTimer = ({
+const CircleTimer = ({
   size,
   strokeWidth,
   trailStrokeWidth,
@@ -85,8 +85,8 @@ const CountdownCircleTimer = ({
   )
 }
 
-CountdownCircleTimer.propTypes = countdownCircleTimerProps
-CountdownCircleTimer.defaultProps = countdownCircleTimerDefaultProps
-CountdownCircleTimer.displayName = 'CountdownCircleTimer'
+CircleTimer.propTypes = countdownCircleTimerProps
+CircleTimer.defaultProps = countdownCircleTimerDefaultProps
+CircleTimer.displayName = 'CircleTimer'
 
-export { CountdownCircleTimer }
+export { CircleTimer }

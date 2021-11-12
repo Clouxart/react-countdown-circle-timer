@@ -1,7 +1,7 @@
 {
   "name": "@clouxart/react-circle-timer",
-  "version": "0.0.1",
-  "private": false,
+  "version": "0.0.2",
+  "private": true,
   "description": "Lightweight React/React Native countdown timer component with color and progress animation based on SVG",
   "workspaces": [
     "packages/*"

@@ -25,7 +25,7 @@ const countdownCircleTimerDefaultProps = {
   rotation: 'clockwise',
 }
 
-const CountdownCircleTimer = (props) => {
+const CircleTimer = (props) => {
   const {
     size,
     strokeWidth,
@@ -125,8 +125,8 @@ const CountdownCircleTimer = (props) => {
   )
 }
 
-CountdownCircleTimer.propTypes = countdownCircleTimerProps
-CountdownCircleTimer.defaultProps = countdownCircleTimerDefaultProps
-CountdownCircleTimer.displayName = 'CountdownCircleTimer'
+CircleTimer.propTypes = countdownCircleTimerProps
+CircleTimer.defaultProps = countdownCircleTimerDefaultProps
+CircleTimer.displayName = 'CircleTimer'
 
-export { CountdownCircleTimer }
+export { CircleTimer }
