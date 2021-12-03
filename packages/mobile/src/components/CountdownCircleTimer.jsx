@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Animated ,Dimensions} from 'react-native'
+import { View, Animated, Dimensions } from 'react-native'
 import Svg, { Path, Defs, LinearGradient, Stop, Circle } from 'react-native-svg'
 import {
   DefsLinearGradient,
@@ -10,13 +10,13 @@ import { useCountdown } from '../hooks'
 
 const AnimatedPath = Animated.createAnimatedComponent(Path)
 
-const windowHeight= Dimensions.get('window').height;
+const windowHeight = Dimensions.get('window').height
 
 const countdownCircleTimerDefaultProps = {
-  size:windowHeight*0.3694581,
-  strokeWidth: windowHeight*0.0209359,
+  size: windowHeight * 0.3694581,
+  strokeWidth: windowHeight * 0.0209359,
   trailColor: 'black',
-  trailStrokeWidth:windowHeight*0.0199359,
+  trailStrokeWidth: windowHeight * 0.0199359,
   isPlaying: false,
   strokeLinecap: 'round',
   isLinearGradient: false,
@@ -93,21 +93,21 @@ const CountdownCircleTimer = (props) => {
         />
         {isProgressPathVisible && (
           <>
-          <Path
-      fill="none"
-      stroke="black"
-      d={path}
-      strokeWidth="20"
-      strokeDasharray="3 8"
-    />
-          <AnimatedPath
-             fill="none"
-             stroke="white"
-             d={path}
-             strokeWidth="22"
-             strokeDasharray={pathLength}
-             strokeDashoffset={strokeDashoffset}
-          />
+            <Path
+              fill="none"
+              stroke={colors}
+              d={path}
+              strokeWidth="20"
+              strokeDasharray="3 8"
+            />
+            <AnimatedPath
+              fill="none"
+              stroke="white"
+              d={path}
+              strokeWidth="22"
+              strokeDasharray={pathLength}
+              strokeDashoffset={strokeDashoffset}
+            />
           </>
         )}
       </Svg>
